@@ -169,8 +169,8 @@ public class GradebookPanel extends JPanel {
         @Override
         public void setValueAt(Object aValue, int row, int column) {
             if (data == null || row >= data.size()) return;
-            GradebookRow r=data.get(row);
-            Double score=null;
+            GradebookRow r = data.get(row);
+            Double score = null;
 
             // (Keep your parsing logic here: instanceof Double, String, Number)
             if (aValue instanceof Double) score=(Double) aValue;
