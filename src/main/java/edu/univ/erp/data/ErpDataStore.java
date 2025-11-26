@@ -323,7 +323,10 @@ public class ErpDataStore {
                             case "Project": row.setProject(score); break;
                             case "Midsem": row.setMidsem(score); break;
                             case "Endsem": row.setEndsem(score); break;
-                            case "Final": row.setFinalGrade(finalGrade); break;
+                            case "Final":
+                                row.setFinalGrade(finalGrade);
+                                row.setFinalScore(score); // store numeric score
+                                break;
                         }
                     }
                 }
