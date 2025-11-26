@@ -57,15 +57,19 @@ public class GradebookPanel extends JPanel {
     }
 
     private JPanel createActionPanel() {
+        //drop
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-
-        // --- NEW BUTTON ---
-        JButton statsButton = new JButton("Show Statistics");
+        JButton dropButton = new JButton("Drop Student");
+        dropButton.setBackground(new Color(220, 53, 69)); // Red
+        dropButton.setForeground(Color.WHITE);
+        dropButton.addActionListener(e -> onDropStudent());
+        panel.add(dropButton);
+        //stats
+        JButton statsButton = new JButton("Show Stats");
         statsButton.setBackground(new Color(13, 110, 253)); // Blue
         statsButton.setForeground(Color.WHITE);
         statsButton.addActionListener(e -> onShowStats());
         panel.add(statsButton);
-        // ------------------
 
         JButton calcFinalButton = new JButton("Calculate Final Grades");
         calcFinalButton.addActionListener(e -> onCalculateFinal());
@@ -127,45 +131,44 @@ public class GradebookPanel extends JPanel {
             this.data=data;//get data
             fireTableDataChanged(); //refresh
         }
-
-        //overriding
         @Override
-        public int getRowCount(){
-            if (data == null){
-                return 0;
-            }
-            return data.size();
-        }
-        @Override
-        public int getColumnCount(){ return columnNames.length; }
+        public int getRowCount() { return (data == null) ? 0 : data.size(); }
 
         @Override
-        public String getColumnName(int col){ return columnNames[col]; }
+        public int getColumnCount() { return columnNames.length; }
 
         @Override
-        public boolean isCellEditable(int row, int col){
-            return col >= 2 && col <= 6; // col 2 to 6 are editable
+        public String getColumnName(int column) { return columnNames[column]; }
+
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            // Only the components (columns 2-6) are editable
+            return column >= 2 && column <= 6;
         }
 
         @Override
-        public Class<?> getColumnClass(int col){
-            if (col < 2 || col == 7) return String.class;
-            return Double.class;
+        public Class<?> getColumnClass(int column) {
+            // Roll, Name, and Final Grade (last col) are Strings
+            if (column < 2 || column == 8) return String.class;
+            return Double.class; // Scores are Doubles
         }
 
         @Override
-        public Object getValueAt(int row, int col){
-            if (data ==null|| row >=data.size()) return null;
-            GradebookRow r=data.get(row);
-            switch(col){
-                case 0:return r.getRollNo();
-                case 1:return r.getStudentName();
-                case 2:return r.getQuiz1();
-                case 3:return r.getQuiz2();
-                case 4:return r.getProject();
-                case 5:return r.getMidsem();
-                case 6:return r.getEndsem();
-                case 7:return r.getFinalGrade();
+        public Object getValueAt(int row, int column) {
+            if (data == null || row >= data.size()) return null;
+            GradebookRow r = data.get(row);
+            switch (column) {
+                case 0: return r.getRollNo();
+                case 1: return r.getStudentName();
+                case 2: return r.getQuiz1();
+                case 3: return r.getQuiz2();
+                case 4: return r.getProject();
+                case 5: return r.getMidsem();
+                case 6: return r.getEndsem();
+                // --- NEW COLUMN ---
+                case 7: return r.getFinalScore();
+                // ------------------
+                case 8: return r.getFinalGrade();
                 default: return null;
             }
         }
@@ -176,14 +179,13 @@ public class GradebookPanel extends JPanel {
             GradebookRow r = data.get(row);
             Double score = null;
 
-            // (Keep your parsing logic here: instanceof Double, String, Number)
-            if (aValue instanceof Double) score=(Double) aValue;
-            else if (aValue instanceof String){
-                try { score=java.lang.Double.parseDouble((String) aValue); } catch(Exception e){}
+            if (aValue instanceof Double) score = (Double) aValue;
+            else if (aValue instanceof String) {
+                try { score = java.lang.Double.parseDouble((String) aValue); } catch(Exception e){}
             }
-            else if (aValue instanceof Number) score=((Number) aValue).doubleValue();
+            else if (aValue instanceof Number) score = ((Number) aValue).doubleValue();
 
-            switch (col){
+            switch (column) {
                 case 2: r.setQuiz1(score); break;
                 case 3: r.setQuiz2(score); break;
                 case 4: r.setProject(score); break;
