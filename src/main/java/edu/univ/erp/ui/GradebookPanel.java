@@ -79,6 +79,19 @@ public class GradebookPanel extends JPanel {
         panel.add(saveButton);
         return panel;
     }
+    private void onShowStats() {
+        // 1. Get the report string from the service
+        String stats = instructorService.getSectionStatistics(gradebookList);
+
+        // 2. Put it in a text area so we can use a monospaced font (for alignment)
+        JTextArea textArea = new JTextArea(stats);
+        textArea.setFont(new Font("Monospaced", Font.PLAIN, 12));
+        textArea.setEditable(false);
+        textArea.setOpaque(false); // Make it look like a label
+
+        // 3. Show the dialog
+        JOptionPane.showMessageDialog(this, textArea, "Class Statistics", JOptionPane.INFORMATION_MESSAGE);
+    }
 
     private void loadGradebookData(){
         // get fresh data
