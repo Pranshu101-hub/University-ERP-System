@@ -60,11 +60,11 @@ public class GradebookPanel extends JPanel {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 
         // --- NEW BUTTON ---
-        JButton dropButton = new JButton("Drop Student");
-        dropButton.setBackground(new Color(220, 53, 69)); // Red
-        dropButton.setForeground(Color.WHITE);
-        dropButton.addActionListener(e -> onDropStudent());
-        panel.add(dropButton);
+        JButton statsButton = new JButton("Show Statistics");
+        statsButton.setBackground(new Color(13, 110, 253)); // Blue
+        statsButton.setForeground(Color.WHITE);
+        statsButton.addActionListener(e -> onShowStats());
+        panel.add(statsButton);
         // ------------------
 
         JButton calcFinalButton = new JButton("Calculate Final Grades");
