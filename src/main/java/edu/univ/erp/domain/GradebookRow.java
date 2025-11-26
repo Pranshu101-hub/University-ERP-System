@@ -11,6 +11,7 @@ public class GradebookRow {
     private Double midsem;
     private Double endsem;
     private String finalGrade;
+    private Double finalScore;
 
     public GradebookRow(int enrollmentId, int studentId, String rollNo, String studentName) {
         this.enrollmentId = enrollmentId;
