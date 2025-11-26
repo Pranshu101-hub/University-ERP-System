@@ -32,7 +32,7 @@ public class Main {
                 System.out.println("Closing database connections...");
                 MySqlConnectionManager.getInstance().closeDataSources();
             }));
-            //start the Swing UI
+            //start the swing ui
             SwingUtilities.invokeLater(() -> {
                 LoginWindow loginWindow=new LoginWindow();
                 loginWindow.setVisible(true);
