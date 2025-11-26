@@ -29,6 +29,8 @@ public class GradebookRow {
     public Double getProject() { return project; }
     public Double getMidsem() { return midsem; }
     public Double getEndsem() { return endsem; }
+    public Double getFinalScore() { return finalScore; }
+    public void setFinalScore(Double finalScore) { this.finalScore = finalScore; }
     public void setQuiz1(Double quiz1) { this.quiz1 = quiz1; }
     public void setQuiz2(Double quiz2) { this.quiz2 = quiz2; }
     public void setProject(Double project) { this.project = project; }
