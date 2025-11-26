@@ -117,7 +117,11 @@ public class GradebookPanel extends JPanel {
     }
 
     class GradebookTableModel extends javax.swing.table.AbstractTableModel {
-        private final String[] columnNames={"Roll No", "Name", "Quiz-1 (10%)", "Quiz-2 (10%)", "Project (20%)", "Midsem (25%)", "Endsem (35%)", "Final"};
+        private final String[] columnNames = {
+                "Roll No", "Name",
+                "Quiz-1 (10%)", "Quiz-2 (10%)", "Project (20%)", "Midsem (25%)", "Endsem (35%)",
+                "Final Score", "Final Grade"
+        };
         private List<GradebookRow> data;
         public void setGradebookData(List<GradebookRow> data){
             this.data=data;//get data
