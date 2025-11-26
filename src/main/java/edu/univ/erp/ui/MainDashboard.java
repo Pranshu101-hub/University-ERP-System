@@ -149,14 +149,8 @@ public class MainDashboard extends JFrame {
     private void createStudentTabs(JTabbedPane tabs) {
         this.myRegistrationsPanel = new MyRegistrationsPanel(session);
         tabs.addTab("My Registrations", this.myRegistrationsPanel);
-
-        // --- CRITICAL FIX ---
-        // Assign to the CLASS variable 'this.myTimetablePanel'
-        // Do NOT write 'MyTimetablePanel myTimetablePanel = ...'
         this.myTimetablePanel = new MyTimetablePanel(session);
         tabs.addTab("My Timetable", this.myTimetablePanel);
-        // --------------------
-
         this.myGradesPanel = new MyGradesPanel(session);
         tabs.addTab("My Grades", this.myGradesPanel);
     }

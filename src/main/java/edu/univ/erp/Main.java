@@ -1,5 +1,4 @@
 package edu.univ.erp;
-
 import com.formdev.flatlaf.FlatLightLaf;
 import edu.univ.erp.data.DatabaseConfig;
 import edu.univ.erp.data.MySqlConnectionManager;
