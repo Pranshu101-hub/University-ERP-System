@@ -13,7 +13,7 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            // Set the Modern Look and Feel (FlatLaf)
+           //for ui setup (FlatLaf)
             FlatLightLaf.setup();
             UIManager.put("Button.arc", 999);
             UIManager.put("Component.arc", 999);
