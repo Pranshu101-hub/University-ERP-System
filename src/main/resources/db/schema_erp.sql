@@ -52,3 +52,20 @@ CREATE TABLE IF NOT EXISTS settings (
   setting_key VARCHAR(100) PRIMARY KEY,
   setting_value VARCHAR(255)
 );
+
+--after creating both dbs
+INSERT INTO courses
+(code, title, credits)
+VALUES
+('MTH201', 'PnS', 4),
+('CSE101', 'IP', 4),
+('ECE111', 'DC', 4),
+('MTH203', 'M-III', 4);
+
+INSERT INTO sections
+(course_id, instructor_id, day_time, room, capacity, semester, year)
+VALUES
+(10, 7, 'Mon 09:30–11:00 / Wed 09:30–11:00', 'C201', 300, 'Monsoon', 2025),
+(11, 2, 'Monday 11:00–12:30 / Wednesday 11:00–12:30', 'C101', 300, 'Monsoon', 2025),
+(13, 5, 'Tue 09:30–11:00 / Thu 11:00–12:30', 'C101', 300, 'Monsoon', 2025),
+(14, 9, 'Tuesday 16:30–18:00 / Thursday 16:30–18:00', 'C201', 300, 'Monsoon', 2025);
