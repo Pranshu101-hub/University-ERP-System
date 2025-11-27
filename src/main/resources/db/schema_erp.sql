@@ -69,3 +69,9 @@ VALUES
 (11, 2, 'Monday 11:00–12:30 / Wednesday 11:00–12:30', 'C101', 300, 'Monsoon', 2025),
 (13, 5, 'Tue 09:30–11:00 / Thu 11:00–12:30', 'C101', 300, 'Monsoon', 2025),
 (14, 9, 'Tuesday 16:30–18:00 / Thursday 16:30–18:00', 'C201', 300, 'Monsoon', 2025);
+
+
+INSERT INTO settings (`key`, `value`)
+VALUES
+('registration_deadline', '2025-12-31'),
+('maintenance_on', 'false');
