@@ -165,9 +165,7 @@ public class GradebookPanel extends JPanel {
                 case 4: return r.getProject();
                 case 5: return r.getMidsem();
                 case 6: return r.getEndsem();
-                // --- NEW COLUMN ---
                 case 7: return r.getFinalScore();
-                // ------------------
                 case 8: return r.getFinalGrade();
                 default: return null;
             }
@@ -184,6 +182,14 @@ public class GradebookPanel extends JPanel {
                 try { score = java.lang.Double.parseDouble((String) aValue); } catch(Exception e){}
             }
             else if (aValue instanceof Number) score = ((Number) aValue).doubleValue();
+
+            if (score != null && (score < 0 || score > 100)) {
+                JOptionPane.showMessageDialog(null,
+                        "Invalid Score: " + score + "\nMarks must be between 0 and 100.",
+                        "Input Error",
+                        JOptionPane.ERROR_MESSAGE);
+                return; // REJECT the change (don't update the row)
+            }
 
             switch (column) {
                 case 2: r.setQuiz1(score); break;
